@@ -565,7 +565,11 @@ class MyBottomBar extends StatelessWidget {
                 color: ColorApp().color_white,
                 borderRadius: BorderRadius.all(Radius.circular(100))),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
               icon: FaIcon(
                 FontAwesomeIcons.house,
                 color: ColorApp().color_green,

@@ -23,7 +23,7 @@ class _RegisterState extends State<RegisterPage> {
           child: Column(children: [
             Stack(children: [
               Container(
-                height: 250,
+                height: 230,
                 width: double.infinity,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -32,7 +32,7 @@ class _RegisterState extends State<RegisterPage> {
                 ),
               ),
               Container(
-                height: 320,
+                height: 300,
                 width: double.infinity,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -43,8 +43,8 @@ class _RegisterState extends State<RegisterPage> {
               Center(
                 child: Container(
                   margin: EdgeInsets.only(top: 100),
-                  height: 140,
-                  width: 140,
+                  height: 130,
+                  width: 130,
                   child: ClipOval(
                     child: Image.asset("assets/images/logo.png"),
                   ),
@@ -63,11 +63,11 @@ class _RegisterState extends State<RegisterPage> {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 250),
+                  margin: EdgeInsets.only(top: 230),
                   child: Text(
                     'Register',
                     style: GoogleFonts.lobster(
-                      fontSize: 40,
+                      fontSize: 50,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -155,6 +155,14 @@ class _RegisterState extends State<RegisterPage> {
                               ),
                             ),
                             keyboardType: TextInputType.emailAddress,
+                            validator: (val) {
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                      .hasMatch(val)) {
+                                return "Enter a valid email address";
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ),
@@ -195,6 +203,59 @@ class _RegisterState extends State<RegisterPage> {
                               ),
                             ),
                             keyboardType: TextInputType.emailAddress,
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Please enter your password";
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
+                      Container(
+                        width: 350,
+                        height: 60,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 7.0, vertical: 4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                          color: ColorApp().color_white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 7,
+                              blurRadius: 10,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: TextFormField(
+                            style: TextStyle(color: ColorApp().color_grey),
+                            decoration: InputDecoration(
+                              icon: FaIcon(
+                                FontAwesomeIcons.phone,
+                                color: ColorApp().color_grey,
+                                size: 20,
+                              ),
+                              border: InputBorder.none,
+                              hintText: 'phone number',
+                              hintStyle: GoogleFonts.poppins(
+                                color: ColorApp().color_grey,
+                                fontSize: 16,
+                              ),
+                            ),
+                            keyboardType: TextInputType.phone,
+                            validator: (val) {
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
+                                return "Enter a valid phone number";
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ),
@@ -226,7 +287,7 @@ class _RegisterState extends State<RegisterPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 190),
+                  padding: const EdgeInsets.only(top: 240),
                   child: Row(
                     children: [
                       Image.asset("assets/images/bottom_app.png"),

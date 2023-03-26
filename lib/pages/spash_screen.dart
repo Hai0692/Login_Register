@@ -19,7 +19,7 @@ class _MyHomePageState extends State<SpashScreen> {
     new Timer(const Duration(milliseconds: 2200), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => LoginPage()),
             (route) => false);
       });
     });

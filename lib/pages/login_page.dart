@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../common/color.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -44,8 +45,8 @@ class _LoginState extends State<LoginPage> {
                 Center(
                   child: Container(
                     margin: EdgeInsets.only(top: 100),
-                    height: 140,
-                    width: 140,
+                    height: 130,
+                    width: 130,
                     child: ClipOval(
                       child: Image.asset("assets/images/logo.png"),
                     ),
@@ -195,7 +196,11 @@ class _LoginState extends State<LoginPage> {
                           SizedBox(width: 10),
                           ElevatedButton(
                             child: Image.asset('assets/icons/arrow.png'),
-                            onPressed: () {},
+                            onPressed: () {
+                                 Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => HomePage()),
+        );
+                            },
                             style: ElevatedButton.styleFrom(
                                 shape: StadiumBorder(),
                                 backgroundColor: HexColor("#0EBE7E")),
